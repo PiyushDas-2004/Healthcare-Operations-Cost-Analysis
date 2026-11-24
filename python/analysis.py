@@ -285,6 +285,11 @@ def run_regressions(t: dict) -> dict:
     # robustness: star rating as categories instead of linear
     cat = _fit(f"log_ppd ~ {RHS_BASE.replace('star_rating', 'C(star_rating)')} + log_cmi + C(urban_rural)", ppd_data)
     out["ppd_casemix_star_categorical_r2"] = float(cat.rsquared)
+    # robustness: Maryland is paid under its all-payer waiver, not standard IPPS rates
+    no_md = _fit(models["ppd_casemix"][0], ppd_data[ppd_data["state"] != "MD"])
+    out["ppd_casemix_excl_md"] = {"n": int(no_md.nobs), "r2": float(no_md.rsquared),
+                                  "err_x10_pct": float((np.exp(no_md.params["err_x10"]) - 1) * 100),
+                                  "err_x10_p": float(no_md.pvalues["err_x10"])}
     return out
 
 
@@ -665,11 +670,13 @@ def export_powerbi(t: dict) -> list[Path]:
     h["size_band"] = h["size_band"].str[2:]
     hc = t["mart_hospital_condition"].copy()
     paths = []
-    for name, df in [("hospital.csv", h), ("hospital_condition.csv", hc),
-                     ("state_summary.csv", t["mart_state_summary"]),
-                     ("drg_national.csv", t["int_drg_national"])]:
+    for name, df, keys in [("hospital.csv", h, ["ccn"]),
+                           ("hospital_condition.csv", hc, ["ccn", "condition_code"]),
+                           ("state_summary.csv", t["mart_state_summary"], ["state"]),
+                           ("drg_national.csv", t["int_drg_national"], ["drg_code"])]:
         p = POWERBI / name
-        df.round(6).to_csv(p, index=False)
+        # sorted on the table's key so re-runs produce byte-identical files
+        df.sort_values(keys).round(6).to_csv(p, index=False)
         paths.append(p)
     return paths
 
@@ -715,7 +722,7 @@ def run_all(write: bool = True) -> dict:
     summary["regression"] = {k: ({kk: vv for kk, vv in v.items() if kk not in ("table", "unique_r2")}
                                  | {"unique_r2": v["unique_r2"].to_dict(),
                                     "coefficients": v["table"].round(6).to_dict(orient="index")}
-                                 if isinstance(v, dict) else v) for k, v in reg.items()}
+                                 if isinstance(v, dict) and "table" in v else v) for k, v in reg.items()}
     summary["excess_readmissions"]["by_condition"] = b["by_condition"].round(4).to_dict(orient="index")
     summary["savings"]["sensitivity_base"] = d["sensitivity"].round(0).to_dict(orient="index")
     (REPORTS / "results.json").write_text(json.dumps(summary, indent=2, default=float) + "\n")
@@ -745,7 +752,8 @@ def run_all(write: bool = True) -> dict:
                "Diagnostics: " + ", ".join(f"{k} = {v:.4g}" for k, v in r["diagnostics"].items()
                                           if not isinstance(v, dict)) + "\n"]
     md += [f"Robustness: state fixed effects instead of regions R² = {reg['ppd_casemix_state_fe_r2']:.3f}; "
-           f"star rating as categories R² = {reg['ppd_casemix_star_categorical_r2']:.3f}.\n"]
+           f"star rating as categories R² = {reg['ppd_casemix_star_categorical_r2']:.3f}; "
+           f"excluding Maryland (all-payer waiver) {reg['ppd_casemix_excl_md']}.\n"]
     md += ["## b. Excess readmission cost\n",
            f"- Base {money(b['total_cost_base'])} per year (low {money(b['total_cost_low'])}, high {money(b['total_cost_high'])}); "
            f"{b['positive_excess_readmissions_per_year']:,.0f} excess readmissions/yr at hospitals above expected; "

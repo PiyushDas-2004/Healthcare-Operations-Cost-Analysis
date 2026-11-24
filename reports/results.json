@@ -30,38 +30,38 @@
     "ppd_base": {
       "formula": "log_ppd ~ C(size_band, Treatment('Small (<500)')) + C(ownership_group, Treatment('Non-profit')) + C(region, Treatment('South')) + star_rating + err_x10",
       "n": 2594,
-      "r2": 0.25857940812469216,
-      "adj_r2": 0.255709022558005,
+      "r2": 0.25857940812469227,
+      "adj_r2": 0.2557090225580051,
       "f_pvalue": 8.629575786895692e-160,
       "diagnostics": {
         "n": 2594,
-        "max_vif": 1.4109474238904771,
+        "max_vif": 1.410947423890477,
         "vif": {
           "Size: Large (2,000-4,999)": 1.3919236829771178,
-          "Size: Medium (500-1,999)": 1.4109474238904771,
-          "Size: Very large (5,000+)": 1.212231856853947,
+          "Size: Medium (500-1,999)": 1.410947423890477,
+          "Size: Very large (5,000+)": 1.2122318568539465,
           "Ownership: For-profit": 1.17984002871284,
           "Ownership: Government": 1.1129160652723757,
           "Region: Midwest": 1.2942130799704048,
           "Region: Northeast": 1.2593642785819354,
-          "Region: West": 1.2154445998677688,
+          "Region: West": 1.215444599867769,
           "Star rating (+1 star)": 1.3104459032143798,
           "Readmission ratio (+0.1)": 1.2813738154860814
         },
-        "breusch_pagan_p": 3.1356781811177873e-10,
+        "breusch_pagan_p": 3.13567818111978e-10,
         "jarque_bera_p": 0.0,
-        "resid_skew": 1.2415417238854105,
-        "resid_kurtosis": 7.365493839071366,
+        "resid_skew": 1.24154172388541,
+        "resid_kurtosis": 7.365493839071358,
         "influential_points_cooks_gt_4_over_n": 156,
         "r2_without_influential_points": 0.3537551420438566,
         "condition_number": 18.278940118673795
       },
       "unique_r2": {
-        "Region": 0.1360931412492289,
-        "Size band": 0.10008626734166592,
-        "Readmission ratio": 0.010522422271714182,
-        "Star rating": 0.007791832202423632,
-        "Ownership": 0.007438549721675791
+        "Region": 0.136093141249229,
+        "Size band": 0.10008626734166604,
+        "Readmission ratio": 0.010522422271714293,
+        "Star rating": 0.007791832202423521,
+        "Ownership": 0.007438549721676124
       },
       "coefficients": {
         "Intercept": {
@@ -179,8 +179,8 @@
     "ppd_casemix": {
       "formula": "log_ppd ~ C(size_band, Treatment('Small (<500)')) + C(ownership_group, Treatment('Non-profit')) + C(region, Treatment('South')) + star_rating + err_x10 + log_cmi + C(urban_rural)",
       "n": 2594,
-      "r2": 0.6421863926029227,
-      "adj_r2": 0.640522788074149,
+      "r2": 0.642186392602923,
+      "adj_r2": 0.6405227880741493,
       "f_pvalue": 0.0,
       "diagnostics": {
         "n": 2594,
@@ -190,31 +190,31 @@
           "Size: Medium (500-1,999)": 1.5845857858780992,
           "Size: Very large (5,000+)": 1.5823529491268777,
           "Ownership: For-profit": 1.1991380648958103,
-          "Ownership: Government": 1.116805766615781,
-          "Region: Midwest": 1.2961606134276311,
+          "Ownership: Government": 1.1168057666157807,
+          "Region: Midwest": 1.2961606134276313,
           "Region: Northeast": 1.269563333152455,
           "Region: West": 1.2712790822235676,
-          "Location: Urban": 1.4165095777270265,
-          "Star rating (+1 star)": 1.3230298468493482,
-          "Readmission ratio (+0.1)": 1.3300225950872056,
-          "Case-mix index (log)": 1.4807082371865272
+          "Location: Urban": 1.4165095777270262,
+          "Star rating (+1 star)": 1.3230298468493484,
+          "Readmission ratio (+0.1)": 1.330022595087206,
+          "Case-mix index (log)": 1.4807082371865274
         },
-        "breusch_pagan_p": 2.1153971463737297e-13,
+        "breusch_pagan_p": 2.1153971463750837e-13,
         "jarque_bera_p": 0.0,
-        "resid_skew": 1.9122915137839505,
-        "resid_kurtosis": 14.876226430203113,
+        "resid_skew": 1.9122915137839582,
+        "resid_kurtosis": 14.876226430203186,
         "influential_points_cooks_gt_4_over_n": 118,
-        "r2_without_influential_points": 0.7512928914872635,
-        "condition_number": 24.34072149348685
+        "r2_without_influential_points": 0.7512928914872634,
+        "condition_number": 24.340721493486825
       },
       "unique_r2": {
-        "Case mix (DRG mix)": 0.372608276618418,
-        "Region": 0.07516258186662439,
-        "Ownership": 0.015816706036538286,
-        "Star rating": 0.006223080664911507,
-        "Size band": 0.0033959795742856125,
-        "Urban/rural": 0.0009662745774118298,
-        "Readmission ratio": 0.0001101407740978777
+        "Case mix (DRG mix)": 0.3726082766184182,
+        "Region": 0.07516258186662483,
+        "Ownership": 0.01581670603653862,
+        "Star rating": 0.006223080664911951,
+        "Size band": 0.0033959795742859455,
+        "Urban/rural": 0.0009662745774121628,
+        "Readmission ratio": 0.00011014077409821077
       },
       "coefficients": {
         "Intercept": {
@@ -354,35 +354,35 @@
       "n": 2544,
       "r2": 0.13673662166154898,
       "adj_r2": 0.13332855463297244,
-      "f_pvalue": 3.065738381022879e-80,
+      "f_pvalue": 3.0657383810142852e-80,
       "diagnostics": {
         "n": 2544,
         "max_vif": 1.4031819330630302,
         "vif": {
-          "Size: Large (2,000-4,999)": 1.382577945625044,
+          "Size: Large (2,000-4,999)": 1.3825779456250438,
           "Size: Medium (500-1,999)": 1.4031819330630302,
           "Size: Very large (5,000+)": 1.2074958116110825,
-          "Ownership: For-profit": 1.187258647191134,
+          "Ownership: For-profit": 1.1872586471911342,
           "Ownership: Government": 1.1193515751489647,
-          "Region: Midwest": 1.3122212071574042,
+          "Region: Midwest": 1.3122212071574044,
           "Region: Northeast": 1.2797345203681039,
-          "Region: West": 1.2304047637199034,
+          "Region: West": 1.2304047637199031,
           "Star rating (+1 star)": 1.3095972274183436,
-          "Readmission ratio (+0.1)": 1.279254047798788
+          "Readmission ratio (+0.1)": 1.2792540477987882
         },
-        "breusch_pagan_p": 5.785902825179522e-30,
+        "breusch_pagan_p": 5.785902825180189e-30,
         "jarque_bera_p": 0.0,
-        "resid_skew": 0.9446270787194234,
-        "resid_kurtosis": 6.492589876511786,
+        "resid_skew": 0.944627078719423,
+        "resid_kurtosis": 6.492589876511785,
         "influential_points_cooks_gt_4_over_n": 113,
-        "r2_without_influential_points": 0.17848984669511136,
-        "condition_number": 18.300291847524555
+        "r2_without_influential_points": 0.17848984669511148,
+        "condition_number": 18.300291847524562
       },
       "unique_r2": {
-        "Size band": 0.03475448173273743,
+        "Size band": 0.03475448173273754,
         "Star rating": 0.030804693181602172,
         "Ownership": 0.021819601971580727,
-        "Region": 0.02155673040111672,
+        "Region": 0.02155673040111683,
         "Readmission ratio": 0.0002823726498925039
       },
       "coefficients": {
@@ -468,9 +468,9 @@
     "mspb_casemix": {
       "formula": "mspb_ratio ~ C(size_band, Treatment('Small (<500)')) + C(ownership_group, Treatment('Non-profit')) + C(region, Treatment('South')) + star_rating + err_x10 + log_cmi + C(urban_rural)",
       "n": 2544,
-      "r2": 0.16159420556535464,
-      "adj_r2": 0.15761914846017255,
-      "f_pvalue": 2.44780121438014e-93,
+      "r2": 0.16159420556535475,
+      "adj_r2": 0.15761914846017266,
+      "f_pvalue": 2.4478012143737e-93,
       "diagnostics": {
         "n": 2544,
         "max_vif": 1.8048732091961897,
@@ -484,26 +484,26 @@
           "Region: Northeast": 1.2919145957212197,
           "Region: West": 1.2855895057175994,
           "Location: Urban": 1.419216678568621,
-          "Star rating (+1 star)": 1.3228299419628273,
-          "Readmission ratio (+0.1)": 1.329473326760248,
+          "Star rating (+1 star)": 1.322829941962827,
+          "Readmission ratio (+0.1)": 1.3294733267602483,
           "Case-mix index (log)": 1.49530347813858
         },
-        "breusch_pagan_p": 3.0574438462049426e-29,
+        "breusch_pagan_p": 3.057443846207387e-29,
         "jarque_bera_p": 0.0,
-        "resid_skew": 1.0002232051298046,
-        "resid_kurtosis": 6.674672625012288,
+        "resid_skew": 1.000223205129802,
+        "resid_kurtosis": 6.674672625012271,
         "influential_points_cooks_gt_4_over_n": 117,
-        "r2_without_influential_points": 0.22481381271072087,
-        "condition_number": 24.360991128666345
+        "r2_without_influential_points": 0.22481381271072065,
+        "condition_number": 24.36099112866632
       },
       "unique_r2": {
-        "Star rating": 0.03553534921814361,
-        "Region": 0.02329308112744166,
+        "Star rating": 0.03553534921814383,
+        "Region": 0.02329308112744155,
         "Urban/rural": 0.021398961145404738,
-        "Ownership": 0.015927638526358034,
-        "Size band": 0.00677402122091908,
-        "Case mix (DRG mix)": 0.000626331529896329,
-        "Readmission ratio": 2.985283431156116e-05
+        "Ownership": 0.015927638526358145,
+        "Size band": 0.006774021220919302,
+        "Case mix (DRG mix)": 0.00062633152989644,
+        "Readmission ratio": 2.9852834311672183e-05
       },
       "coefficients": {
         "Intercept": {
@@ -599,16 +599,22 @@
         }
       }
     },
-    "ppd_casemix_state_fe_r2": 0.7686509014433957,
-    "ppd_casemix_star_categorical_r2": 0.6431350728308294
+    "ppd_casemix_state_fe_r2": 0.7686509014433958,
+    "ppd_casemix_star_categorical_r2": 0.6431350728308295,
+    "ppd_casemix_excl_md": {
+      "n": 2553,
+      "r2": 0.6752988721173698,
+      "err_x10_pct": 0.33389655991800105,
+      "err_x10_p": 0.6848458019812477
+    }
   },
   "excess_readmissions": {
     "segments": {},
-    "total_cost_low": 30497725.148636516,
+    "total_cost_low": 30497725.148636512,
     "total_cost_base": 44301691.523044705,
-    "total_cost_high": 53659601.53619738,
-    "net_cost_base": 1760516.4831889495,
-    "positive_excess_readmissions_per_year": 4081.829878333334,
+    "total_cost_high": 53659601.53619739,
+    "net_cost_base": 1760516.483188942,
+    "positive_excess_readmissions_per_year": 4081.829878333333,
     "net_excess_readmissions_per_year": 321.2522383333335,
     "eligible_discharges_per_year": 778639.0,
     "rows_with_counts": 8037,
@@ -617,7 +623,7 @@
     "suppressed_upper_bound_cost": 4274471.799141229,
     "share_of_inpatient_payments": 0.0005898125290273739,
     "share_of_inpatient_payments_incl_suppressed_ub": 0.000646720898334136,
-    "cms_style_penalty_proxy": 290838026.66448814,
+    "cms_style_penalty_proxy": 290838026.6644881,
     "by_condition": {
       "Heart failure": {
         "hospitals_with_counts": 2316,
@@ -704,24 +710,24 @@
     "median_err_low": 0.9942666666666666,
     "mean_err_high": 1.0003111341929323,
     "mean_err_low": 0.9942150973409306,
-    "sd_err_high": 0.0567618453041832,
+    "sd_err_high": 0.05676184530418319,
     "sd_err_low": 0.05961380573364696,
-    "mann_whitney_u": 257631.0,
-    "mann_whitney_p": 0.09488273085471696,
-    "rank_biserial": 0.05156368623417329,
-    "hodges_lehmann_shift": 0.004266666666666752,
+    "mann_whitney_u": 257628.0,
+    "mann_whitney_p": 0.09496120674128634,
+    "rank_biserial": 0.05155144123625499,
+    "hodges_lehmann_shift": 0.004266666666666863,
     "median_diff_boot_ci95": [
       -0.0016617916666665678,
-      0.011321958333333335
+      0.011321958333333233
     ],
-    "welch_t": 1.9595110877671742,
-    "welch_p": 0.05025179728995116,
+    "welch_t": 1.9595110877671744,
+    "welch_p": 0.05025179728995109,
     "cohens_d": 0.10472603264087733,
-    "levene_p": 0.0011574383477036686,
-    "shapiro_p_high": 0.04028596882862875,
-    "shapiro_p_low": 9.09724364245413e-23,
-    "spearman_rho_volume_err": 0.05354066460178049,
-    "spearman_p": 0.004679647295137315
+    "levene_p": 0.0011574383477036942,
+    "shapiro_p_high": 0.04028596882866446,
+    "shapiro_p_low": 9.097243642453478e-23,
+    "spearman_rho_volume_err": 0.053541476810435494,
+    "spearman_p": 0.004679019195180818
   },
   "savings": {
     "main": {
@@ -737,7 +743,7 @@
       "top_n_share_of_hospitals": 0.1383344803854095,
       "top_n_share_of_discharges": 0.5002012122812788,
       "top_n_min_discharges": 3680,
-      "top_n_share_of_excess_cost": 0.43358108661231076
+      "top_n_share_of_excess_cost": 0.4335810866123108
     },
     "sensitivity_base": {
       "50": {

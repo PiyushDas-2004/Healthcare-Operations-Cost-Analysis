@@ -184,7 +184,7 @@ Unique R² by block (drop in R² when the block is removed):
 
 Diagnostics: n = 2544, max_vif = 1.805, breusch_pagan_p = 3.057e-29, jarque_bera_p = 0, resid_skew = 1, resid_kurtosis = 6.675, influential_points_cooks_gt_4_over_n = 117, r2_without_influential_points = 0.2248, condition_number = 24.36
 
-Robustness: state fixed effects instead of regions R² = 0.769; star rating as categories R² = 0.643.
+Robustness: state fixed effects instead of regions R² = 0.769; star rating as categories R² = 0.643; excluding Maryland (all-payer waiver) {'n': 2553, 'r2': 0.6752988721173698, 'err_x10_pct': 0.33389655991800105, 'err_x10_p': 0.6848458019812477}.
 
 ## b. Excess readmission cost
 
@@ -260,10 +260,10 @@ Robustness: state fixed effects instead of regions R² = 0.769; star rating as c
 - sd_err_high: 0.05676
 - sd_err_low: 0.05961
 - mann_whitney_u: 2.576e+05
-- mann_whitney_p: 0.09488
-- rank_biserial: 0.05156
+- mann_whitney_p: 0.09496
+- rank_biserial: 0.05155
 - hodges_lehmann_shift: 0.004267
-- median_diff_boot_ci95: [-0.0016617916666665678, 0.011321958333333335]
+- median_diff_boot_ci95: [-0.0016617916666665678, 0.011321958333333233]
 - welch_t: 1.96
 - welch_p: 0.05025
 - cohens_d: 0.1047
@@ -271,7 +271,7 @@ Robustness: state fixed effects instead of regions R² = 0.769; star rating as c
 - shapiro_p_high: 0.04029
 - shapiro_p_low: 9.097e-23
 - spearman_rho_volume_err: 0.05354
-- spearman_p: 0.00468
+- spearman_p: 0.004679
 - volume cut-offs: {'low_max_discharges': 292.0, 'high_min_discharges': 2373.0}
 
 | condition | n_high | n_low | median_err_high | median_err_low | p_value | rank_biserial | p_holm |
