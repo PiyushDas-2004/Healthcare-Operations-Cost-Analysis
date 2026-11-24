@@ -1,0 +1,22 @@
+# Python / virtualenv
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Data: raw CMS downloads are large and recreated by `make ingest`
+data/raw/
+*.duckdb
+*.duckdb.wal
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets / local config
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
