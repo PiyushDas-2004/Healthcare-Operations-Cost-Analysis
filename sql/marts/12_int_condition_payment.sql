@@ -7,7 +7,8 @@
 --   high : same, but using average TOTAL payment (Medicare + beneficiary
 --          cost-sharing + other primary payers) = full cost of the stay.
 --   low  : national average Medicare payment for the condition's lower-severity
---          DRGs only (no MCC) - assumes avoidable readmissions are the simpler ones.
+--          DRGs only (no MCC) - assumes avoidable readmissions are the simpler ones -
+--          or the base value if that is lower.
 
 create or replace table int_condition_payment as
 with cond_drg as (
@@ -54,7 +55,10 @@ select
          else 'national' end                                                     as payment_source,
     coalesce(h.avg_medicare_payment, s.avg_medicare_payment, n.avg_medicare_payment) as cost_per_readmission_base,
     coalesce(h.avg_total_payment,    s.avg_total_payment,    n.avg_total_payment)    as cost_per_readmission_high,
-    l.avg_medicare_payment_no_mcc                                                    as cost_per_readmission_low,
+    -- low is capped at base so it can never exceed it (for hip/knee the national
+    -- non-MCC average is above some low-cost hospitals' own average)
+    least(l.avg_medicare_payment_no_mcc,
+          coalesce(h.avg_medicare_payment, s.avg_medicare_payment, n.avg_medicare_payment)) as cost_per_readmission_low,
     n.avg_medicare_payment                                                           as national_avg_medicare_payment
 from hrrp_keys k
 left join hospital_level h on h.ccn = k.ccn and h.condition_code = k.condition_code

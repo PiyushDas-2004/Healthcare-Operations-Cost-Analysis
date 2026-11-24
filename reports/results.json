@@ -1,0 +1,775 @@
+{
+  "context": {
+    "total_medicare_inpatient_payment": 75111479229.00195,
+    "total_discharges": 4952481,
+    "national_payment_per_discharge": 15166.434607018573,
+    "hospitals_in_inpatient_file": 2906,
+    "drg_count": 540,
+    "top_drg": {
+      "code": "871",
+      "desc": "SEPTICEMIA OR SEVERE SEPSIS WITHOUT MV >96 HOURS WITH MCC",
+      "medicare_payment": 8959316640.004663,
+      "share": 0.11928025825039675,
+      "discharges": 577119
+    },
+    "top10_drg_share": 0.33710873030212957,
+    "drgs_for_50pct_of_spend": 25,
+    "payment_per_discharge_p10_p90": [
+      8614.109313681196,
+      19880.433475821155
+    ],
+    "variance_decomposition": {
+      "share_case_mix": 0.5113791748288223,
+      "share_price": 0.4857523405455162,
+      "share_covariance": 0.0028684846256613714,
+      "contribution_case_mix": 0.5128134171416532,
+      "contribution_price": 0.4871865828583469
+    }
+  },
+  "regression": {
+    "ppd_base": {
+      "formula": "log_ppd ~ C(size_band, Treatment('Small (<500)')) + C(ownership_group, Treatment('Non-profit')) + C(region, Treatment('South')) + star_rating + err_x10",
+      "n": 2594,
+      "r2": 0.25857940812469216,
+      "adj_r2": 0.255709022558005,
+      "f_pvalue": 8.629575786895692e-160,
+      "diagnostics": {
+        "n": 2594,
+        "max_vif": 1.4109474238904771,
+        "vif": {
+          "Size: Large (2,000-4,999)": 1.3919236829771178,
+          "Size: Medium (500-1,999)": 1.4109474238904771,
+          "Size: Very large (5,000+)": 1.212231856853947,
+          "Ownership: For-profit": 1.17984002871284,
+          "Ownership: Government": 1.1129160652723757,
+          "Region: Midwest": 1.2942130799704048,
+          "Region: Northeast": 1.2593642785819354,
+          "Region: West": 1.2154445998677688,
+          "Star rating (+1 star)": 1.3104459032143798,
+          "Readmission ratio (+0.1)": 1.2813738154860814
+        },
+        "breusch_pagan_p": 3.1356781811177873e-10,
+        "jarque_bera_p": 0.0,
+        "resid_skew": 1.2415417238854105,
+        "resid_kurtosis": 7.365493839071366,
+        "influential_points_cooks_gt_4_over_n": 156,
+        "r2_without_influential_points": 0.3537551420438566,
+        "condition_number": 18.278940118673795
+      },
+      "unique_r2": {
+        "Region": 0.1360931412492289,
+        "Size band": 0.10008626734166592,
+        "Readmission ratio": 0.010522422271714182,
+        "Star rating": 0.007791832202423632,
+        "Ownership": 0.007438549721675791
+      },
+      "coefficients": {
+        "Intercept": {
+          "coef": 9.343526,
+          "std_err": 0.024851,
+          "p_value": 0.0,
+          "ci_low": 9.294818,
+          "ci_high": 9.392234,
+          "pct_effect": 1142361.692193,
+          "pct_ci_low": 1088048.331465,
+          "pct_ci_high": 1199386.026296
+        },
+        "Size: Large (2,000-4,999)": {
+          "coef": 0.179238,
+          "std_err": 0.016478,
+          "p_value": 0.0,
+          "ci_low": 0.146943,
+          "ci_high": 0.211534,
+          "pct_effect": 19.630562,
+          "pct_ci_low": 15.828742,
+          "pct_ci_high": 23.557168
+        },
+        "Size: Medium (500-1,999)": {
+          "coef": 0.023918,
+          "std_err": 0.014014,
+          "p_value": 0.087876,
+          "ci_low": -0.003549,
+          "ci_high": 0.051385,
+          "pct_effect": 2.42065,
+          "pct_ci_low": -0.354285,
+          "pct_ci_high": 5.272861
+        },
+        "Size: Very large (5,000+)": {
+          "coef": 0.355586,
+          "std_err": 0.023917,
+          "p_value": 0.0,
+          "ci_low": 0.30871,
+          "ci_high": 0.402461,
+          "pct_effect": 42.701632,
+          "pct_ci_low": 36.166778,
+          "pct_ci_high": 49.550104
+        },
+        "Ownership: For-profit": {
+          "coef": 0.011103,
+          "std_err": 0.015279,
+          "p_value": 0.467416,
+          "ci_low": -0.018844,
+          "ci_high": 0.04105,
+          "pct_effect": 1.116513,
+          "pct_ci_low": -1.866708,
+          "pct_ci_high": 4.190424
+        },
+        "Ownership: Government": {
+          "coef": 0.090262,
+          "std_err": 0.023038,
+          "p_value": 8.9e-05,
+          "ci_low": 0.045108,
+          "ci_high": 0.135416,
+          "pct_effect": 9.446089,
+          "pct_ci_low": 4.61406,
+          "pct_ci_high": 14.501304
+        },
+        "Region: Midwest": {
+          "coef": 0.028862,
+          "std_err": 0.014645,
+          "p_value": 0.048747,
+          "ci_low": 0.000159,
+          "ci_high": 0.057565,
+          "pct_effect": 2.928215,
+          "pct_ci_low": 0.015873,
+          "pct_ci_high": 5.925361
+        },
+        "Region: Northeast": {
+          "coef": 0.140325,
+          "std_err": 0.019672,
+          "p_value": 0.0,
+          "ci_low": 0.101769,
+          "ci_high": 0.17888,
+          "pct_effect": 15.064742,
+          "pct_ci_low": 10.712805,
+          "pct_ci_high": 19.587748
+        },
+        "Region: West": {
+          "coef": 0.328235,
+          "std_err": 0.015969,
+          "p_value": 0.0,
+          "ci_low": 0.296936,
+          "ci_high": 0.359533,
+          "pct_effect": 38.851461,
+          "pct_ci_low": 34.572968,
+          "pct_ci_high": 43.26598
+        },
+        "Star rating (+1 star)": {
+          "coef": -0.031518,
+          "std_err": 0.006415,
+          "p_value": 1e-06,
+          "ci_low": -0.044092,
+          "ci_high": -0.018945,
+          "pct_effect": -3.102686,
+          "pct_ci_low": -4.313411,
+          "pct_ci_high": -1.876642
+        },
+        "Readmission ratio (+0.1)": {
+          "coef": -0.081887,
+          "std_err": 0.013125,
+          "p_value": 0.0,
+          "ci_low": -0.107613,
+          "ci_high": -0.056162,
+          "pct_effect": -7.862431,
+          "pct_ci_low": -10.20248,
+          "pct_ci_high": -5.461402
+        }
+      }
+    },
+    "ppd_casemix": {
+      "formula": "log_ppd ~ C(size_band, Treatment('Small (<500)')) + C(ownership_group, Treatment('Non-profit')) + C(region, Treatment('South')) + star_rating + err_x10 + log_cmi + C(urban_rural)",
+      "n": 2594,
+      "r2": 0.6421863926029227,
+      "adj_r2": 0.640522788074149,
+      "f_pvalue": 0.0,
+      "diagnostics": {
+        "n": 2594,
+        "max_vif": 1.8180445444791253,
+        "vif": {
+          "Size: Large (2,000-4,999)": 1.8180445444791253,
+          "Size: Medium (500-1,999)": 1.5845857858780992,
+          "Size: Very large (5,000+)": 1.5823529491268777,
+          "Ownership: For-profit": 1.1991380648958103,
+          "Ownership: Government": 1.116805766615781,
+          "Region: Midwest": 1.2961606134276311,
+          "Region: Northeast": 1.269563333152455,
+          "Region: West": 1.2712790822235676,
+          "Location: Urban": 1.4165095777270265,
+          "Star rating (+1 star)": 1.3230298468493482,
+          "Readmission ratio (+0.1)": 1.3300225950872056,
+          "Case-mix index (log)": 1.4807082371865272
+        },
+        "breusch_pagan_p": 2.1153971463737297e-13,
+        "jarque_bera_p": 0.0,
+        "resid_skew": 1.9122915137839505,
+        "resid_kurtosis": 14.876226430203113,
+        "influential_points_cooks_gt_4_over_n": 118,
+        "r2_without_influential_points": 0.7512928914872635,
+        "condition_number": 24.34072149348685
+      },
+      "unique_r2": {
+        "Case mix (DRG mix)": 0.372608276618418,
+        "Region": 0.07516258186662439,
+        "Ownership": 0.015816706036538286,
+        "Star rating": 0.006223080664911507,
+        "Size band": 0.0033959795742856125,
+        "Urban/rural": 0.0009662745774118298,
+        "Readmission ratio": 0.0001101407740978777
+      },
+      "coefficients": {
+        "Intercept": {
+          "coef": 9.670157,
+          "std_err": 0.017798,
+          "p_value": 0.0,
+          "ci_low": 9.635273,
+          "ci_high": 9.70504,
+          "pct_effect": 1583682.81914,
+          "pct_ci_low": 1529387.855608,
+          "pct_ci_high": 1639905.188014
+        },
+        "Size: Large (2,000-4,999)": {
+          "coef": -0.051005,
+          "std_err": 0.014283,
+          "p_value": 0.000355,
+          "ci_low": -0.078999,
+          "ci_high": -0.023012,
+          "pct_effect": -4.972627,
+          "pct_ci_low": -7.595906,
+          "pct_ci_high": -2.274876
+        },
+        "Size: Medium (500-1,999)": {
+          "coef": -0.047813,
+          "std_err": 0.011675,
+          "p_value": 4.2e-05,
+          "ci_low": -0.070696,
+          "ci_high": -0.02493,
+          "pct_effect": -4.668821,
+          "pct_ci_low": -6.82553,
+          "pct_ci_high": -2.462192
+        },
+        "Size: Very large (5,000+)": {
+          "coef": -0.036481,
+          "std_err": 0.018492,
+          "p_value": 0.048511,
+          "ci_low": -0.072724,
+          "ci_high": -0.000239,
+          "pct_effect": -3.582396,
+          "pct_ci_low": -7.014271,
+          "pct_ci_high": -0.02386
+        },
+        "Ownership: For-profit": {
+          "coef": -0.052933,
+          "std_err": 0.009957,
+          "p_value": 0.0,
+          "ci_low": -0.072448,
+          "ci_high": -0.033417,
+          "pct_effect": -5.155607,
+          "pct_ci_low": -6.988602,
+          "pct_ci_high": -3.286488
+        },
+        "Ownership: Government": {
+          "coef": 0.100654,
+          "std_err": 0.017958,
+          "p_value": 0.0,
+          "ci_low": 0.065457,
+          "ci_high": 0.135851,
+          "pct_effect": 10.589392,
+          "pct_ci_low": 6.764728,
+          "pct_ci_high": 14.551068
+        },
+        "Region: Midwest": {
+          "coef": 0.007207,
+          "std_err": 0.009834,
+          "p_value": 0.463629,
+          "ci_low": -0.012067,
+          "ci_high": 0.026481,
+          "pct_effect": 0.723302,
+          "pct_ci_low": -1.199427,
+          "pct_ci_high": 2.683448
+        },
+        "Region: Northeast": {
+          "coef": 0.161817,
+          "std_err": 0.013699,
+          "p_value": 0.0,
+          "ci_low": 0.134967,
+          "ci_high": 0.188667,
+          "pct_effect": 17.564521,
+          "pct_ci_low": 14.449879,
+          "pct_ci_high": 20.763925
+        },
+        "Region: West": {
+          "coef": 0.225246,
+          "std_err": 0.012312,
+          "p_value": 0.0,
+          "ci_low": 0.201115,
+          "ci_high": 0.249378,
+          "pct_effect": 25.263131,
+          "pct_ci_low": 22.276489,
+          "pct_ci_high": 28.322722
+        },
+        "Location: Urban": {
+          "coef": -0.028522,
+          "std_err": 0.012091,
+          "p_value": 0.018332,
+          "ci_low": -0.05222,
+          "ci_high": -0.004823,
+          "pct_effect": -2.811871,
+          "pct_ci_low": -5.088013,
+          "pct_ci_high": -0.481144
+        },
+        "Star rating (+1 star)": {
+          "coef": -0.028302,
+          "std_err": 0.004428,
+          "p_value": 0.0,
+          "ci_low": -0.036982,
+          "ci_high": -0.019623,
+          "pct_effect": -2.790557,
+          "pct_ci_low": -3.630648,
+          "pct_ci_high": -1.943143
+        },
+        "Readmission ratio (+0.1)": {
+          "coef": -0.008535,
+          "std_err": 0.008858,
+          "p_value": 0.335237,
+          "ci_low": -0.025896,
+          "ci_high": 0.008825,
+          "pct_effect": -0.84991,
+          "pct_ci_low": -2.55637,
+          "pct_ci_high": 0.886435
+        },
+        "Case-mix index (log)": {
+          "coef": 1.140247,
+          "std_err": 0.025087,
+          "p_value": 0.0,
+          "ci_low": 1.091077,
+          "ci_high": 1.189417,
+          "pct_effect": 212.754053,
+          "pct_ci_low": 197.747915,
+          "pct_ci_high": 228.516482
+        }
+      }
+    },
+    "mspb_base": {
+      "formula": "mspb_ratio ~ C(size_band, Treatment('Small (<500)')) + C(ownership_group, Treatment('Non-profit')) + C(region, Treatment('South')) + star_rating + err_x10",
+      "n": 2544,
+      "r2": 0.13673662166154898,
+      "adj_r2": 0.13332855463297244,
+      "f_pvalue": 3.065738381022879e-80,
+      "diagnostics": {
+        "n": 2544,
+        "max_vif": 1.4031819330630302,
+        "vif": {
+          "Size: Large (2,000-4,999)": 1.382577945625044,
+          "Size: Medium (500-1,999)": 1.4031819330630302,
+          "Size: Very large (5,000+)": 1.2074958116110825,
+          "Ownership: For-profit": 1.187258647191134,
+          "Ownership: Government": 1.1193515751489647,
+          "Region: Midwest": 1.3122212071574042,
+          "Region: Northeast": 1.2797345203681039,
+          "Region: West": 1.2304047637199034,
+          "Star rating (+1 star)": 1.3095972274183436,
+          "Readmission ratio (+0.1)": 1.279254047798788
+        },
+        "breusch_pagan_p": 5.785902825179522e-30,
+        "jarque_bera_p": 0.0,
+        "resid_skew": 0.9446270787194234,
+        "resid_kurtosis": 6.492589876511786,
+        "influential_points_cooks_gt_4_over_n": 113,
+        "r2_without_influential_points": 0.17848984669511136,
+        "condition_number": 18.300291847524555
+      },
+      "unique_r2": {
+        "Size band": 0.03475448173273743,
+        "Star rating": 0.030804693181602172,
+        "Ownership": 0.021819601971580727,
+        "Region": 0.02155673040111672,
+        "Readmission ratio": 0.0002823726498925039
+      },
+      "coefficients": {
+        "Intercept": {
+          "coef": 1.027755,
+          "std_err": 0.006998,
+          "p_value": 0.0,
+          "ci_low": 1.01404,
+          "ci_high": 1.04147
+        },
+        "Size: Large (2,000-4,999)": {
+          "coef": 0.037824,
+          "std_err": 0.004205,
+          "p_value": 0.0,
+          "ci_low": 0.029582,
+          "ci_high": 0.046067
+        },
+        "Size: Medium (500-1,999)": {
+          "coef": 0.024094,
+          "std_err": 0.004101,
+          "p_value": 0.0,
+          "ci_low": 0.016056,
+          "ci_high": 0.032132
+        },
+        "Size: Very large (5,000+)": {
+          "coef": 0.041044,
+          "std_err": 0.004795,
+          "p_value": 0.0,
+          "ci_low": 0.031645,
+          "ci_high": 0.050442
+        },
+        "Ownership: For-profit": {
+          "coef": 0.029637,
+          "std_err": 0.004778,
+          "p_value": 0.0,
+          "ci_low": 0.020272,
+          "ci_high": 0.039002
+        },
+        "Ownership: Government": {
+          "coef": -0.007012,
+          "std_err": 0.004702,
+          "p_value": 0.135861,
+          "ci_low": -0.016228,
+          "ci_high": 0.002203
+        },
+        "Region: Midwest": {
+          "coef": -0.03023,
+          "std_err": 0.003628,
+          "p_value": 0.0,
+          "ci_low": -0.037341,
+          "ci_high": -0.023119
+        },
+        "Region: Northeast": {
+          "coef": -0.004425,
+          "std_err": 0.004309,
+          "p_value": 0.304492,
+          "ci_low": -0.012872,
+          "ci_high": 0.004021
+        },
+        "Region: West": {
+          "coef": -0.015568,
+          "std_err": 0.004938,
+          "p_value": 0.001618,
+          "ci_low": -0.025247,
+          "ci_high": -0.00589
+        },
+        "Star rating (+1 star)": {
+          "coef": -0.014972,
+          "std_err": 0.001635,
+          "p_value": 0.0,
+          "ci_low": -0.018177,
+          "ci_high": -0.011768
+        },
+        "Readmission ratio (+0.1)": {
+          "coef": 0.003206,
+          "std_err": 0.003379,
+          "p_value": 0.342666,
+          "ci_low": -0.003416,
+          "ci_high": 0.009829
+        }
+      }
+    },
+    "mspb_casemix": {
+      "formula": "mspb_ratio ~ C(size_band, Treatment('Small (<500)')) + C(ownership_group, Treatment('Non-profit')) + C(region, Treatment('South')) + star_rating + err_x10 + log_cmi + C(urban_rural)",
+      "n": 2544,
+      "r2": 0.16159420556535464,
+      "adj_r2": 0.15761914846017255,
+      "f_pvalue": 2.44780121438014e-93,
+      "diagnostics": {
+        "n": 2544,
+        "max_vif": 1.8048732091961897,
+        "vif": {
+          "Size: Large (2,000-4,999)": 1.8048732091961897,
+          "Size: Medium (500-1,999)": 1.5755246465492845,
+          "Size: Very large (5,000+)": 1.5830160551740273,
+          "Ownership: For-profit": 1.2064980083197905,
+          "Ownership: Government": 1.1232177394261023,
+          "Region: Midwest": 1.3135142404696738,
+          "Region: Northeast": 1.2919145957212197,
+          "Region: West": 1.2855895057175994,
+          "Location: Urban": 1.419216678568621,
+          "Star rating (+1 star)": 1.3228299419628273,
+          "Readmission ratio (+0.1)": 1.329473326760248,
+          "Case-mix index (log)": 1.49530347813858
+        },
+        "breusch_pagan_p": 3.0574438462049426e-29,
+        "jarque_bera_p": 0.0,
+        "resid_skew": 1.0002232051298046,
+        "resid_kurtosis": 6.674672625012288,
+        "influential_points_cooks_gt_4_over_n": 117,
+        "r2_without_influential_points": 0.22481381271072087,
+        "condition_number": 24.360991128666345
+      },
+      "unique_r2": {
+        "Star rating": 0.03553534921814361,
+        "Region": 0.02329308112744166,
+        "Urban/rural": 0.021398961145404738,
+        "Ownership": 0.015927638526358034,
+        "Size band": 0.00677402122091908,
+        "Case mix (DRG mix)": 0.000626331529896329,
+        "Readmission ratio": 2.985283431156116e-05
+      },
+      "coefficients": {
+        "Intercept": {
+          "coef": 1.021538,
+          "std_err": 0.007536,
+          "p_value": 0.0,
+          "ci_low": 1.006769,
+          "ci_high": 1.036308
+        },
+        "Size: Large (2,000-4,999)": {
+          "coef": 0.019933,
+          "std_err": 0.004889,
+          "p_value": 4.6e-05,
+          "ci_low": 0.010352,
+          "ci_high": 0.029515
+        },
+        "Size: Medium (500-1,999)": {
+          "coef": 0.013242,
+          "std_err": 0.004233,
+          "p_value": 0.001757,
+          "ci_low": 0.004946,
+          "ci_high": 0.021539
+        },
+        "Size: Very large (5,000+)": {
+          "coef": 0.020246,
+          "std_err": 0.006117,
+          "p_value": 0.000934,
+          "ci_low": 0.008257,
+          "ci_high": 0.032235
+        },
+        "Ownership: For-profit": {
+          "coef": 0.026126,
+          "std_err": 0.004826,
+          "p_value": 0.0,
+          "ci_low": 0.016667,
+          "ci_high": 0.035584
+        },
+        "Ownership: Government": {
+          "coef": -0.004689,
+          "std_err": 0.004657,
+          "p_value": 0.313952,
+          "ci_low": -0.013817,
+          "ci_high": 0.004438
+        },
+        "Region: Midwest": {
+          "coef": -0.030563,
+          "std_err": 0.003592,
+          "p_value": 0.0,
+          "ci_low": -0.037602,
+          "ci_high": -0.023524
+        },
+        "Region: Northeast": {
+          "coef": -0.007167,
+          "std_err": 0.004189,
+          "p_value": 0.087089,
+          "ci_low": -0.015377,
+          "ci_high": 0.001043
+        },
+        "Region: West": {
+          "coef": -0.02167,
+          "std_err": 0.004869,
+          "p_value": 9e-06,
+          "ci_low": -0.031213,
+          "ci_high": -0.012127
+        },
+        "Location: Urban": {
+          "coef": 0.032023,
+          "std_err": 0.00412,
+          "p_value": 0.0,
+          "ci_low": 0.023948,
+          "ci_high": 0.040098
+        },
+        "Star rating (+1 star)": {
+          "coef": -0.016162,
+          "std_err": 0.001614,
+          "p_value": 0.0,
+          "ci_low": -0.019325,
+          "ci_high": -0.012999
+        },
+        "Readmission ratio (+0.1)": {
+          "coef": 0.001063,
+          "std_err": 0.00343,
+          "p_value": 0.756696,
+          "ci_low": -0.00566,
+          "ci_high": 0.007786
+        },
+        "Case-mix index (log)": {
+          "coef": 0.011208,
+          "std_err": 0.00957,
+          "p_value": 0.24154,
+          "ci_low": -0.007549,
+          "ci_high": 0.029966
+        }
+      }
+    },
+    "ppd_casemix_state_fe_r2": 0.7686509014433957,
+    "ppd_casemix_star_categorical_r2": 0.6431350728308294
+  },
+  "excess_readmissions": {
+    "segments": {},
+    "total_cost_low": 30497725.148636516,
+    "total_cost_base": 44301691.523044705,
+    "total_cost_high": 53659601.53619738,
+    "net_cost_base": 1760516.4831889495,
+    "positive_excess_readmissions_per_year": 4081.829878333334,
+    "net_excess_readmissions_per_year": 321.2522383333335,
+    "eligible_discharges_per_year": 778639.0,
+    "rows_with_counts": 8037,
+    "rows_total": 18330,
+    "rows_suppressed_err_gt_1": 1328,
+    "suppressed_upper_bound_cost": 4274471.799141229,
+    "share_of_inpatient_payments": 0.0005898125290273739,
+    "share_of_inpatient_payments_incl_suppressed_ub": 0.000646720898334136,
+    "cms_style_penalty_proxy": 290838026.66448814,
+    "by_condition": {
+      "Heart failure": {
+        "hospitals_with_counts": 2316,
+        "eligible_discharges_per_year": 286272.3333,
+        "hospitals_err_above_1": 1187,
+        "net_excess_readmissions_per_year": -93.1109,
+        "positive_excess_readmissions_per_year": 1618.7148,
+        "cost_low": 11441153.8159,
+        "cost_base": 15871578.7814,
+        "cost_high": 18970521.1045,
+        "avg_cost_per_excess_readmission": 9805.0497,
+        "share_of_excess_cost": 0.3583
+      },
+      "Pneumonia": {
+        "hospitals_with_counts": 2320,
+        "eligible_discharges_per_year": 270636.0,
+        "hospitals_err_above_1": 1189,
+        "net_excess_readmissions_per_year": 391.0848,
+        "positive_excess_readmissions_per_year": 1508.4894,
+        "cost_low": 9564979.8455,
+        "cost_base": 15836023.5298,
+        "cost_high": 19023919.3678,
+        "avg_cost_per_excess_readmission": 10497.9348,
+        "share_of_excess_cost": 0.3575
+      },
+      "CABG surgery": {
+        "hospitals_with_counts": 363,
+        "eligible_discharges_per_year": 21716.0,
+        "hospitals_err_above_1": 221,
+        "net_excess_readmissions_per_year": 9.1764,
+        "positive_excess_readmissions_per_year": 113.6408,
+        "cost_low": 3516017.6141,
+        "cost_base": 4464395.9972,
+        "cost_high": 5614964.4962,
+        "avg_cost_per_excess_readmission": 39285.1524,
+        "share_of_excess_cost": 0.1008
+      },
+      "Heart attack (AMI)": {
+        "hospitals_with_counts": 1240,
+        "eligible_discharges_per_year": 89420.0,
+        "hospitals_err_above_1": 703,
+        "net_excess_readmissions_per_year": 17.684,
+        "positive_excess_readmissions_per_year": 376.8184,
+        "cost_low": 2391686.4954,
+        "cost_base": 3901663.0322,
+        "cost_high": 4810028.3639,
+        "avg_cost_per_excess_readmission": 10354.2253,
+        "share_of_excess_cost": 0.0881
+      },
+      "COPD": {
+        "hospitals_with_counts": 1545,
+        "eligible_discharges_per_year": 74831.0,
+        "hospitals_err_above_1": 879,
+        "net_excess_readmissions_per_year": 128.1622,
+        "positive_excess_readmissions_per_year": 357.242,
+        "cost_low": 2227014.4351,
+        "cost_base": 2793953.7092,
+        "cost_high": 3519730.587,
+        "avg_cost_per_excess_readmission": 7820.8992,
+        "share_of_excess_cost": 0.0631
+      },
+      "Hip/knee replacement": {
+        "hospitals_with_counts": 253,
+        "eligible_discharges_per_year": 35763.6667,
+        "hospitals_err_above_1": 136,
+        "net_excess_readmissions_per_year": -131.7443,
+        "positive_excess_readmissions_per_year": 106.9245,
+        "cost_low": 1356872.9426,
+        "cost_base": 1434076.4733,
+        "cost_high": 1720437.6166,
+        "avg_cost_per_excess_readmission": 13412.0522,
+        "share_of_excess_cost": 0.0324
+      }
+    }
+  },
+  "volume_test": {
+    "volume_cutoffs": {
+      "low_max_discharges": 292.0,
+      "high_min_discharges": 2373.0
+    },
+    "n_high": 698,
+    "n_low": 702,
+    "median_err_high": 0.9982683333333333,
+    "median_err_low": 0.9942666666666666,
+    "mean_err_high": 1.0003111341929323,
+    "mean_err_low": 0.9942150973409306,
+    "sd_err_high": 0.0567618453041832,
+    "sd_err_low": 0.05961380573364696,
+    "mann_whitney_u": 257631.0,
+    "mann_whitney_p": 0.09488273085471696,
+    "rank_biserial": 0.05156368623417329,
+    "hodges_lehmann_shift": 0.004266666666666752,
+    "median_diff_boot_ci95": [
+      -0.0016617916666665678,
+      0.011321958333333335
+    ],
+    "welch_t": 1.9595110877671742,
+    "welch_p": 0.05025179728995116,
+    "cohens_d": 0.10472603264087733,
+    "levene_p": 0.0011574383477036686,
+    "shapiro_p_high": 0.04028596882862875,
+    "shapiro_p_low": 9.09724364245413e-23,
+    "spearman_rho_volume_err": 0.05354066460178049,
+    "spearman_p": 0.004679647295137315
+  },
+  "savings": {
+    "main": {
+      "hospitals": 402,
+      "hospitals_with_positive_excess": 354,
+      "positive_excess_readmissions": 1675.5922136666666,
+      "avoided_readmissions": 167.55922136666666,
+      "saving_low": 1327694.8432830756,
+      "saving_base": 1920837.5549325123,
+      "saving_high": 2389168.9625903056,
+      "top_n": 402,
+      "reduction": 0.1,
+      "top_n_share_of_hospitals": 0.1383344803854095,
+      "top_n_share_of_discharges": 0.5002012122812788,
+      "top_n_min_discharges": 3680,
+      "top_n_share_of_excess_cost": 0.43358108661231076
+    },
+    "sensitivity_base": {
+      "50": {
+        "5%": 199490.0,
+        "10%": 398979.0,
+        "20%": 797958.0,
+        "100%": 3989791.0
+      },
+      "100": {
+        "5%": 369207.0,
+        "10%": 738415.0,
+        "20%": 1476830.0,
+        "100%": 7384149.0
+      },
+      "250": {
+        "5%": 711170.0,
+        "10%": 1422341.0,
+        "20%": 2844682.0,
+        "100%": 14223408.0
+      },
+      "402": {
+        "5%": 960419.0,
+        "10%": 1920838.0,
+        "20%": 3841675.0,
+        "100%": 19208376.0
+      },
+      "All": {
+        "5%": 2214784.0,
+        "10%": 4429567.0,
+        "20%": 8859134.0,
+        "100%": 44295672.0
+      }
+    }
+  }
+}
